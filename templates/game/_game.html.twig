@@ -1,0 +1,25 @@
+{% set url = path('games_show', {'slug': game.slug}) %}
+
+<div class="col-md-4">
+    <div class="card bg-light mb3">
+        
+        <a href="{{ url }}">
+            <img src="{{ game.coverImage }}" alt="Image de l'appartement" style="height: 200px; width: 100%; display: block">
+        </a>
+        <div class="card-body" >
+            <h4 class="card-title" >
+                <a href="{{ url }}">
+                    {{game.title }}
+                </a>
+            </h4>
+            <p class="card-text" style="color: #f07f1a; font-size: 1.25rem;">
+                {{ game.introduction }}
+            </p>
+            <a href="{{ url }}" class="btn btn-primary">En savoir plus</a>
+
+             {% if app.user and app.user == game.author %}
+                <a href="{{ path('games_edit', {'slug' : game.slug}) }}" class="btn btn-secondary">Modifier l'annonce</a>
+            {% endif %}
+        </div>
+    </div>
+ </div>
